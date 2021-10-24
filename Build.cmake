@@ -137,10 +137,12 @@ target_compile_options(${G3LOG_LIBRARY} PRIVATE
    # MSVC warnings
    $<$<CXX_COMPILER_ID:MSVC>:/W4>)
 # add GCC specific stuff
+IF(NOT MINGW)
 target_compile_options(${G3LOG_LIBRARY} PRIVATE
    # clang/GCC warnings
    $<$<CXX_COMPILER_ID:GNU>:-rdynamic>
 )
+ENDIF()
 
 #cmake -DCMAKE_CXX_COMPILER=clang++ ..
   # WARNING: If Clang for Linux does not work with full c++14 support it might be your
